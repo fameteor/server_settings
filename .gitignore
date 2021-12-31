@@ -1,0 +1,4 @@
+mongo/
+nginx/certs/
+nginx/logs/
+code/
