@@ -1,27 +1,51 @@
 version: "2"
 services:
-  mongo:
+
+  # gen_prod configuration ------------------------------------------
+  gen_prod_mongo:
     image: mongo:3.2.6
     volumes:
-      - '/data/mongo/data:/data/db'
-  meteorGen:
+      - '/data/mongo/gen_prod/data:/data/db'
+
+  gen_prod:
     image: abernix/meteord:base
     volumes:
       - '/data/code/gen_prod/initial:/bundle'
-      - '/data/mongo/dumps:/data/mongo/dumps'
+      - '/data/mongo/gen_prod/dumps:/data/mongo/dumps'
     links:
-      - 'mongo:mongo'
+      - 'gen_prod_mongo:mongo'
     environment:
-      - MONGO_URL=mongodb://mongo/gen
+      - MONGO_URL=mongodb://mongo/gen_prod
       - ROOT_URL=http://marais.mooo.com
       - 'METEOR_SETTINGS={"public":{"analyticsSettings":{"cred":{"trackingId": "essai"}}}}'
+
+  # gen_dev configuration ------------------------------------------
+  gen_dev_mongo:
+    image: mongo:3.2.6
+    volumes:
+      - '/data/mongo/gen_dev/data:/data/db'
+
+  gen_dev:
+    image: abernix/meteord:base
+    volumes:
+      - '/data/code/gen_dev/initial:/bundle'
+      - '/data/mongo/gen_dev/dumps:/data/mongo/dumps'
+    links:
+      - 'gen_dev_mongo:mongo'
+    environment:
+      - MONGO_URL=mongodb://mongo/gen_dev
+      - ROOT_URL=http://marais.dev.com
+
+
+  # nginx configuration ---------------------------------------------
   nginx:
     image: nginx:1.11
     volumes:
-      - '/data/nginx/conf/nginx_prod.conf:/etc/nginx/nginx.conf:ro'
+      - '/data/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro'
       - '/data/nginx:/data/nginx'
       - '/data/static:/data/static'
     links:
-      - 'meteorGen:meteorGen'
+      - 'gen_prod:gen_prod'
+      - 'gen_dev:gen_dev'
     ports:
       - '80:80'
