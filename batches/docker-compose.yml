@@ -7,7 +7,7 @@ services:
   meteorGen:
     image: abernix/meteord:base
     volumes:
-      - '/data/meteorGen/prod:/bundle'
+      - '/data/code/gen_prod/initial:/bundle'
       - '/data/mongo/dumps:/data/mongo/dumps'
     links:
       - 'mongo:mongo'
