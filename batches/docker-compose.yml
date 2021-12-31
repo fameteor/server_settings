@@ -1,0 +1,27 @@
+version: "2"
+services:
+  mongo:
+    image: mongo:3.2.6
+    volumes:
+      - '/data/mongo/data:/data/db'
+  meteorGen:
+    image: abernix/meteord:base
+    volumes:
+      - '/data/meteorGen/prod:/bundle'
+      - '/data/mongo/dumps:/data/mongo/dumps'
+    links:
+      - 'mongo:mongo'
+    environment:
+      - MONGO_URL=mongodb://mongo/gen
+      - ROOT_URL=http://marais.mooo.com
+      - 'METEOR_SETTINGS={"public":{"analyticsSettings":{"Google Analytics":{"trackingId": "UA-81890854-1"}}}}'
+  nginx:
+    image: nginx:1.11
+    volumes:
+      - '/data/nginx/conf/nginx_prod.conf:/etc/nginx/nginx.conf:ro'
+      - '/data/nginx:/data/nginx'
+      - '/data/static:/data/static'
+    links:
+      - 'meteorGen:meteorGen'
+    ports:
+      - '80:80'
