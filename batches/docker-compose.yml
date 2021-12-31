@@ -14,7 +14,7 @@ services:
     environment:
       - MONGO_URL=mongodb://mongo/gen
       - ROOT_URL=http://marais.mooo.com
-      - 'METEOR_SETTINGS={"public":{"analyticsSettings":{"Google Analytics":{"trackingId": "UA-81890854-1"}}}}'
+      - 'METEOR_SETTINGS={"public":{"analyticsSettings":{"cred":{"trackingId": "essai"}}}}'
   nginx:
     image: nginx:1.11
     volumes:
