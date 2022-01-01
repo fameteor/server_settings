@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+  then
+    echo "Error, no argument supplied : You should provide the date of the backup to restore (format YYYYMMDD_XXXXXX)"
+  else
+    # We stop the application
+    docker-compose -p batches  stop 
+
+    # We start and restore Mongo
+    docker-compose -p batches  up -d gen_prod_mongo
+
+    docker run -e FILE="/tmp/initialGenDataFromWindows" --rm --name mongoReload -it --network batches_back-network -v /data/mongo/gen_prod/initialGenDataFromWindows:/tmp mongo:3.2.6 bash -c 'mongorestore -h "mongo:27017" --drop'
+
+    # We restart the application
+    docker-compose -p tt4cb_demo up -d
+
+    # We list the docker-compose processes
+    docker-compose -p tt4cb_demo ps
+fi
