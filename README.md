@@ -1,12 +1,12 @@
 # Server settings on `/data`
 
-# settings
-`/data`
-	`batches`
-	`code`
-	`mongo`
-	`nginx`
-	`static` : symbolic link for static files : `sudo ln /media/francois/DATA/data/static/ static -s`
+# Settings
+- `/data`
+-	`batches`
+-	`code`
+-	`mongo`
+-	`nginx`
+-	`static` : symbolic link for static file done on `start` : `sudo ln /media/francois/DATA/data/static/ static -s`
 
 # To do
 

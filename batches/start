@@ -1,1 +1,5 @@
+# We create a link to Windows data for static files
+rm /data/static
+ln -s /media/francois/DATA/data/static/ /data/static
+# We start Docker
 docker-compose up -d
