@@ -7,7 +7,7 @@ services:
     volumes:
       - '/data/mongo/gen_prod/data:/data/db'
     networks:
-      - back-network
+      - gen_prod_network
 
   gen_prod:
     image: abernix/meteord:base
@@ -17,7 +17,7 @@ services:
     links:
       - 'gen_prod_mongo:mongo'
     networks:
-      - back-network
+      - gen_prod_network
     environment:
       - MONGO_URL=mongodb://mongo/gen_prod
       - ROOT_URL=http://marais.mooo.com
@@ -29,7 +29,7 @@ services:
     volumes:
       - '/data/mongo/gen_dev/data:/data/db'
     networks:
-      - back-network
+      - gen_dev_network
 
   gen_dev:
     image: abernix/meteord:base
@@ -39,7 +39,7 @@ services:
     links:
       - 'gen_dev_mongo:mongo'
     networks:
-      - back-network
+      - gen_dev_network
     environment:
       - MONGO_URL=mongodb://mongo/gen_dev
       - ROOT_URL=http://marais.dev.com
@@ -58,7 +58,9 @@ services:
     ports:
       - '80:80'
     networks:
-      - back-network
+      - gen_prod_network
+      - gen_dev_network
 
 networks:
-  back-network:
+  gen_prod_network:
+  gen_dev_network:
