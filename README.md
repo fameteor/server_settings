@@ -11,6 +11,6 @@
 # To do
 
 - NGINX : reroute vers specific page when server not available
-- add mongoRestore from initialWindowsData
+- add mongoRestore from initialWindowsData for dev
 - add automatic/manual mongo backup
 
