@@ -1,5 +1,6 @@
 mongo/
 nginx/certs/
 nginx/logs/
-code/
+code/gen_dev/initial/bundle
+code/gen_prod/initial/bundle
 static/
