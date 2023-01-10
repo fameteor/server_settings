@@ -1,4 +1,5 @@
-mongo/
+mongo/gen_dev/data
+mongo/gen_prod/data
 nginx/certs/
 nginx/logs/
 code/gen_dev/initial/bundle
