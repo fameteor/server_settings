@@ -1,5 +1,9 @@
 # We create a link to Windows data for static files
 rm ../static
 ln -s /media/francois/DATA/data/static/ ../static
+
+# We create an Nginx logs directory if not exists
+mkdir -p ../nginx/logs
+
 # We start Docker
 docker compose up -d
