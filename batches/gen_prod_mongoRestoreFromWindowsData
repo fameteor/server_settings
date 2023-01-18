@@ -1,18 +1,18 @@
 #!/bin/sh
 
-echo "Mettre la directory contenant le dump non zippé et nommée par le nom de la BD dans /data/mongo/gen_prod/windowsData"
+echo "Mettre la directory contenant le dump non zippé et nommée par le nom de la BD dans ./mongo/gen_prod/windowsData"
 
 # We stop the application
-docker-compose -p batches stop
+docker compose -p batches stop
 
 # We start and restore Mongo
-docker-compose -p batches  up -d gen_prod_mongo
+docker compose -p batches  up -d gen_prod_mongo
 
-docker run -e FILE="/tmp/initialData" --rm --name mongoReload -it --network batches_gen_prod_network -v /data/mongo/gen_prod/windowsData:/tmp mongo:3.2.6 bash -c 'mongorestore /tmp -h "gen_prod_mongo:27017" --drop'
+docker run -e FILE="/tmp/initialData" --rm --name mongoReload -it --network batches_gen_prod_network -v /media/francois/29986127-6346-4d3d-9897-ed4e3eb2ba8f/webServer/server_settings/mongo/gen_prod/windowsData:/tmp mongo:3.2.6 bash -c 'mongorestore /tmp -h "gen_prod_mongo:27017" --drop'
 
 # We restart the application
-docker-compose -p batches up -d
+docker compose -p batches up -d
 
 # We list the docker-compose processes
-docker-compose -p batches ps
+docker compose -p batches ps
 
