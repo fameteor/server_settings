@@ -6,6 +6,7 @@ services:
     image: mongo:3.2.6
     volumes:
       - '../mongo/gen_prod/data:/data/db'
+      - '../mongo/gen_prod/dumps:/data/mongo/dumps'
     networks:
       - gen_prod_network
 
@@ -28,6 +29,7 @@ services:
     image: mongo:3.2.6
     volumes:
       - '../mongo/gen_dev/data:/data/db'
+      - '../mongo/gen_dev/dumps:/data/mongo/dumps'
     networks:
       - gen_dev_network
 
