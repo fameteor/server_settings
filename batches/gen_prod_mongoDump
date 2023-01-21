@@ -1,4 +1,4 @@
 d=$(date +%s%3N)
-echo "$d"
-echo "GEN_PROD dumping"
+echo "GEN_PROD dumping $d -------------------------"
 docker exec -i batches-gen_prod_mongo-1 /usr/bin/mongodump --db gen_prod --out /data/mongo/dumps/${d}/
+echo "GEN_PROD dumping done"-----------------------

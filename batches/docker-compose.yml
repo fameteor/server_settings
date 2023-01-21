@@ -21,7 +21,7 @@ services:
       - gen_prod_network
     environment:
       - MONGO_URL=mongodb://mongo/gen_prod
-      - ROOT_URL=http://marais.mooo.com
+      - ROOT_URL=http://maraisbreton.myddns.me
       - 'METEOR_SETTINGS={"public":{"analyticsSettings":{"cred":{"trackingId": "essai"}}}}'
 
   # gen_dev configuration ------------------------------------------
