@@ -13,7 +13,7 @@ Clone this directory on a `/data` disk.
 ## Start the GEN server
 ## Start the GEN server
 ## To dump Mongo DB
-Use the batch `sudo sh gen_dev_MongoDump` or `sudo sh gen_prod_mongoDump`. The dump of of the GEN_DEV or GEN_PROD database will be under `server_settings/mongo/gen_dev/dump/<timestamp>/gen_dev/` or `server_settings/mongo/gen_prod/dump/<timestamp>/gen_prod/`
+Use the batch `sudo sh gen_dev_mongoDump` or `sudo sh gen_prod_mongoDump`. The dump of of the GEN_DEV or GEN_PROD database will be under `server_settings/mongo/gen_dev/dump/<timestamp>/gen_dev/` or `server_settings/mongo/gen_prod/dump/<timestamp>/gen_prod/`
 ## Reload the mongo DEV or PROD server
 
 # To do
