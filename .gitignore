@@ -1,7 +1,8 @@
-mongo/gen_dev/data
 mongo/gen_prod/data
-mongo/gen_dev/dumps
 mongo/gen_prod/dumps
+mongo/gen_dev/data
+mongo/gen_dev/dumps
+mongo/gen_dev/windowsData
 nginx/certs/
 nginx/logs/
 code/gen_dev/initial/bundle
